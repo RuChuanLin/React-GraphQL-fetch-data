@@ -1,5 +1,7 @@
 import './style/style.css';
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
@@ -14,13 +16,15 @@ const client = new ApolloClient({
 
 const Root = () => {
   return (
-    <ApolloProvider client={client}>
-      <Router history={hashHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute component={TeacherList} />
-        </Route>
-      </Router>
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <Router history={hashHistory}>
+          <Route path="/" component={App}>
+            <IndexRoute component={TeacherList} />
+          </Route>
+        </Router>
+      </ApolloProvider>
+    </Provider>
   );
 };
 
