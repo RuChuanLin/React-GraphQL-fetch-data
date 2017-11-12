@@ -9,6 +9,9 @@ class TeacherAdd extends Component {
       open: false
     };
   }
+  onCreateTeacher(value) {
+    console.log(value);
+  }
   render() {
     return (
       <div>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import query from '../queries/fetchTeachers';
+import { ListGroup, ListGroupItem, Grid, Row, Col, Clearfix } from 'react-bootstrap'
+
 
 import TeacherAdd from './TeacherAdd';
 class TeacherList extends Component {
@@ -9,20 +11,22 @@ class TeacherList extends Component {
     return this.props.data.teachers.map(
       ({ id, teacherName, experience, description, avaterURI }) => {
         return (
-          <li key={id} className="list-group-item">
+          <ListGroupItem key={id}>
             <h5>{teacherName}</h5>
-            <div className="row">
-              <div className="col-sm-4">{experience}</div>
-              <div className="col-sm-4">{description}</div>
-              <div className="col-sm-4">
-                <img
-                  className="teacher-avater"
-                  src={avaterURI}
-                  alt={teacherName}
-                />
-              </div>
-            </div>
-          </li>
+            <Grid>
+              <Row>
+                <Col sm={4}>{experience}</Col>
+                <Col sm={4}>{description}</Col>
+                <Col sm={4}>
+                  <img
+                    className="teacher-avater"
+                    src={avaterURI}
+                    alt={teacherName}
+                  />
+                </Col>
+              </Row>
+            </Grid>
+          </ListGroupItem>
         );
       }
     );
@@ -35,7 +39,7 @@ class TeacherList extends Component {
       <div>
         <h3>教師名單</h3>
         <TeacherAdd />
-        <ul className="list-group">{this.renderList()}</ul>
+        <ListGroup>{this.renderList()}</ListGroup>
       </div>
     );
   }
