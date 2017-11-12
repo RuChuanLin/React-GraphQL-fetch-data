@@ -1,0 +1,12 @@
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.lyric-content {
+  max-width: 80%;
+}
