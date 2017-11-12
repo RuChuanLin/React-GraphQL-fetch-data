@@ -21,7 +21,7 @@ npm run json:server
 npm run dev
 ``
 
-完成後連至 http://localhost:4001，查看專案。
+完成後連至 http://localhost:4001 ，查看專案。
 
 
 
