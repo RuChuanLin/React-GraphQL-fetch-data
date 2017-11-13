@@ -3,6 +3,8 @@ const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
 const TeacherType = require('./teacher_type');
 const axios = require('axios');
 
+const ROOT_URL = 'http://localhost:3000/data/';
+
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
@@ -21,7 +23,7 @@ const mutation = new GraphQLObjectType({
         { id, teacherName, experience, description, domain, avaterURI }
       ) {
         return axios
-          .post(`http://localhost:3000/data`, {
+          .post(ROOT_URL, {
             id,
             teacherName,
             experience,
@@ -29,7 +31,22 @@ const mutation = new GraphQLObjectType({
             avaterURI,
             domain
           })
-          .then(res => res.data);
+          .then(res => {
+            console.log(res);
+            return res.data;
+          });
+      }
+    },
+    deleteTeacher: {
+      type: TeacherType,
+      args: {
+        id: { type: GraphQLID }
+      },
+      resolve(parentValue, { id }) {
+        return axios.delete(`${ROOT_URL}${id}`).then(res => {
+          console.log(res);
+          return res.data;
+        });
       }
     }
   }

@@ -31,6 +31,7 @@ class Form extends Component {
       <form onSubmit={handleSubmit}>
         <Input label="教師姓名" name="teacherName" placeholder="請輸入教師姓名" />
         <Input label="經歷" name="experience" placeholder="請輸入教師經歷" />
+        <Input label="專長" name="domain" placeholder="請輸入教師專長" />
         <Input label="敘述" name="description" placeholder="請輸入教師敘述" />
         <Input label="頭像" name="avaterURI" placeholder="請輸入教師頭像(目前僅支援URL)" />
         <Button type="submit">Submit</Button>
@@ -44,6 +45,7 @@ const mutation = gql`
     $id: ID!
     $teacherName: String
     $experience: String
+    $domain: String
     $description: String
     $avaterURI: String
   ) {
@@ -51,12 +53,14 @@ const mutation = gql`
       id: $id
       teacherName: $teacherName
       experience: $experience
+      domain: $domain
       description: $description
       avaterURI: $avaterURI
     ) {
       id
       teacherName
       experience
+      domain
       description
       avaterURI
     }

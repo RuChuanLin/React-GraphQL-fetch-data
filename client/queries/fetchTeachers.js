@@ -8,6 +8,7 @@ export default gql`
       experience
       description
       avaterURI
+      domain
     }
   }
 `;
