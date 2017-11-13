@@ -16,14 +16,14 @@ const client = new ApolloClient({
 
 const Root = () => {
   return (
-    <ApolloProvider client={client}>
-      <Provider store={store}>
-        <Router history={hashHistory}>
-          <Route path="/" component={App}>
-            <IndexRoute component={TeacherList} />
-          </Route>
-        </Router>
-      </Provider>
+    <ApolloProvider client={client} store={store}>
+      {/* <Provider store={store}> */}
+      <Router history={hashHistory}>
+        <Route path="/" component={App}>
+          <IndexRoute component={TeacherList} />
+        </Route>
+      </Router>
+      {/* </Provider> */}
     </ApolloProvider>
   );
 };
