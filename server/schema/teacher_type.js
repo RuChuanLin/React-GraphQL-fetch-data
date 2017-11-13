@@ -5,6 +5,7 @@ const TeacherType = new GraphQLObjectType({
   name: 'TeacherType',
   fields: () => ({
     id: { type: GraphQLID },
+    domain: { type: GraphQLString },
     teacherName: { type: GraphQLString },
     experience: { type: GraphQLString },
     description: { type: GraphQLString },

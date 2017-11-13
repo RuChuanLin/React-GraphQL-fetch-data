@@ -13,11 +13,23 @@ const mutation = new GraphQLObjectType({
         teacherName: { type: GraphQLString },
         experience: { type: GraphQLString },
         description: { type: GraphQLString },
+        domain: { type: GraphQLString },
         avaterURI: { type: GraphQLString }
       },
-      resolve(parentValue, { id, teacherName, experience, description, avaterURI }) {
-        return axios.post(`http://localhost:3000/data`, { id, teacherName, experience, description, avaterURI })
-          .then(res => res.data)
+      resolve(
+        parentValue,
+        { id, teacherName, experience, description, domain, avaterURI }
+      ) {
+        return axios
+          .post(`http://localhost:3000/data`, {
+            id,
+            teacherName,
+            experience,
+            description,
+            avaterURI,
+            domain
+          })
+          .then(res => res.data);
       }
     }
   }
